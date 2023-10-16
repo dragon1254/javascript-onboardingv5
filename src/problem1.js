@@ -1,9 +1,3 @@
-let 왼합 = 0;
-let 왼곱 = 1;
-let 오합 = 0;
-let 오곱 = 1;
-let 큰수1 = 0;
-let 큰수2 = 0;
 
 // 이 모든 것은 function problem1 안에서 이루어져야 함
 
@@ -30,6 +24,18 @@ let 큰수2 = 0;
 
 
 function problem1(pobi, crong) {
+  let 왼합 = 0;
+  let 왼곱 = 1;
+  let 오합 = 0;
+  let 오곱 = 1;
+  let 큰수1 = 0;
+  let 큰수2 = 0;
+  
+
+
+
+
+
   var answer;
   return answer;
 }
