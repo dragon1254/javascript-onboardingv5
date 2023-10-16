@@ -35,31 +35,33 @@ function problem1(pobi, crong) {
   let 큰수1 = 0;
   let 큰수2 = 0;
   var answer;
-    
+
+  
+  
   let po1 = String(pobi[0])
   for(var i =0;i<po1.length;i++){
-    왼합1 = 왼합1 + parseInt(po1);
-    왼곱1 = 왼곱1 * parseInt(po1);
+    왼합1 = 왼합1 + parseInt(po1[i]);
+    왼곱1 = 왼곱1 * parseInt(po1[i]);
   }
   let po2 = String(pobi[1])
   for(var i =0;i<po2.length;i++){
-    오합1 = 오합1 + parseInt(po2);
-    오곱1 = 오곱1 * parseInt(po2);
+    오합1 = 오합1 + parseInt(po2[i]);
+    오곱1 = 오곱1 * parseInt(po2[i]);
   }
-    큰수1 = max([왼합1, 왼곱1, 오합1, 오곱1]);
+    큰수1 = Math.max(왼합1, 왼곱1, 오합1, 오곱1);
 
 
     let cr1 = String(crong[0])
     for(var i =0;i<cr1.length;i++){
-      왼합2 = 왼합2 + parseInt(po1);
-      왼곱2 = 왼곱2 * parseInt(po1);
+      왼합2 = 왼합2 + parseInt(cr1[i]);
+      왼곱2 = 왼곱2 * parseInt(cr1[i]);
     }
     let cr2 = String(crong[1])
-    for(var i =0;i<po2.length;i++){
-      오합2 = 오합2 + parseInt(po2);
-      오곱2 = 오곱2 * parseInt(po2);
+    for(var i =0;i<cr2.length;i++){
+      오합2 = 오합2 + parseInt(cr2[i]);
+      오곱2 = 오곱2 * parseInt(cr2[i]);
     }
-  큰수2 = max([왼합2, 왼곱2, 오합2, 오곱2])
+    큰수2 = Math.max(왼합2, 왼곱2, 오합2, 오곱2);
 
   if(큰수1>큰수2){
     answer = 1
@@ -68,8 +70,7 @@ function problem1(pobi, crong) {
   } else if (큰수1 == 큰수2){
     answer = 0
   }
-
-  if(pobi.length>2 || crong.length>2|| pobi[0]<1 || pobi[1]>400 || crong[0]||crong[1]>400){
+  if(pobi.length>2 || crong.length>2|| pobi[0]<1 || pobi[1]>400 || crong[0]<1||crong[1]>400){
     answer = -1
   }
   for(var i =0; i<pobi.length-1;i++){
@@ -80,6 +81,7 @@ function problem1(pobi, crong) {
     if(crong[i]+1 != crong[i+1]){
       answer = -1}
   }
+    
   
   return answer;
 }
