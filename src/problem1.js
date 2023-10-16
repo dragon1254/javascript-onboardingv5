@@ -4,7 +4,7 @@
 // 책을 임의로 펼친 결과를 가져옴 - pobi, crong array를 가져옴
 
 // 먼저 예외사항부터 체크
-// 예외사항일때는 -1 리턴
+// 예외사항일때는 answer에 -1 넣고 return
 // ㄴpobi,crong 어레이는 연속된 수가 아닐때 
 // ㄴ or 어레이의 수가 1보다작거나 400보다 크면 예외사항
 // ㄴ or 각 어레이의 길이가 2보다 클때
@@ -24,19 +24,63 @@
 
 
 function problem1(pobi, crong) {
-  let 왼합 = 0;
-  let 왼곱 = 1;
-  let 오합 = 0;
-  let 오곱 = 1;
+  let 왼합1 = 0;
+  let 왼곱1 = 1;
+  let 오합1 = 0;
+  let 오곱1 = 1;
+  let 왼합2 = 0;
+  let 왼곱2 = 1;
+  let 오합2 = 0;
+  let 오곱2 = 1;
   let 큰수1 = 0;
   let 큰수2 = 0;
-  
-
-
-
-
-
   var answer;
+    
+  let po1 = String(pobi[0])
+  for(var i =0;i<po1.length;i++){
+    왼합1 = 왼합1 + parseInt(po1);
+    왼곱1 = 왼곱1 * parseInt(po1);
+  }
+  let po2 = String(pobi[1])
+  for(var i =0;i<po2.length;i++){
+    오합1 = 오합1 + parseInt(po2);
+    오곱1 = 오곱1 * parseInt(po2);
+  }
+    큰수1 = max([왼합1, 왼곱1, 오합1, 오곱1]);
+
+
+    let cr1 = String(crong[0])
+    for(var i =0;i<cr1.length;i++){
+      왼합2 = 왼합2 + parseInt(po1);
+      왼곱2 = 왼곱2 * parseInt(po1);
+    }
+    let cr2 = String(crong[1])
+    for(var i =0;i<po2.length;i++){
+      오합2 = 오합2 + parseInt(po2);
+      오곱2 = 오곱2 * parseInt(po2);
+    }
+  큰수2 = max([왼합2, 왼곱2, 오합2, 오곱2])
+
+  if(큰수1>큰수2){
+    answer = 1
+  } else if (큰수1<큰수2){
+    answer = 2
+  } else if (큰수1 == 큰수2){
+    answer = 0
+  }
+
+  if(pobi.length>2 || crong.length>2|| pobi[0]<1 || pobi[1]>400 || crong[0]||crong[1]>400){
+    answer = -1
+  }
+  for(var i =0; i<pobi.length-1;i++){
+    if(pobi[i]+1 != pobi[i+1]){
+      answer = -1}
+  }
+  for(var i =0; i<crong.length-1;i++){
+    if(crong[i]+1 != crong[i+1]){
+      answer = -1}
+  }
+  
   return answer;
 }
 
