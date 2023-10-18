@@ -57,7 +57,9 @@ function problem6(forms) {
           }
       }}
   
-
+      answerArray = new Set(indexArray);
+      answer =[...answerArray].sort();
+    
 
   return answer;
 }
