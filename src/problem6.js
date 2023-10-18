@@ -21,7 +21,7 @@ function problem6(forms) {
 
 // indexof 등으로 특정 문자가 등장하는 index를 구하여 중복되는 문자가 있는지 확인
 // ㄴ 특정 문자는 처음에는 제. forms의 배열에서 이름 부분의 index 순서대로 특정문자를 지정
-//   - for문 2번 돌려야 할듯 - forms의 개수 만큼 돌리고 그 안에서 이름의 글자수만큼 돌려서 찾기
+//   for문 2번 돌려야 할듯. 처음 forms에서 각 크루의 배열 뽑아내는데 1번, 그 배열내에서 연속된 텍스트 찾는데 1번
 // ㄴ 없으면 다음 index의 문자로 넘어가는 식
 // 그 다음 index값에 해당하는 문자도 마찬가지로 중복되는지 확인
 // 중복이 된다면 해당하는 forms의 다음 문자를 찾아서 중복되는지 확인
@@ -29,19 +29,36 @@ function problem6(forms) {
 // 예를들어 0,1,3이 해당된다면 [0,1,3]의 배열 만들고 해당하는 forms의 이메일 부분을 배열로 만들어
 // ㄴ [forms[0][0],forms[1][0],forms[3][0]] 과 같이 배열 만들어야 함
 // 오름차순 정렬하고 중복 제거
-
+  let answerArray =[];
+  let indexArray=[]
   let form = forms;
+  let str=''
   for (var i = 0; i<form.length; i++){
-    if(form[i][0].slice(-9,form[i][0].length == 'email.com')){
-    for (var j = 0; j<form[i][1].length; j++){
-      if(form[i][1])
-      form.indexOf(form[i][1])
-    }
-  }
-  }
+      // 신청 이메일이 email.com으로 끝난다는것이라는 제한사항 확인
+      if(form[i][0].slice(-9,form[i][0].length) == 'email.com'){
+          console.log(10);
+          // 크루의 각 폼에서 이름부분에서 2개씩 잘라 str변수에 넣음
+          for(var k=0;k<form.length-2;k++){
+          str =form[i][1].substring(k,k+2);
+          console.log(str);
+          if(str.length ==2){
+          for (var n=0; n<form.length;n++){
+              // 크루의 폼이 같을때는 진행x 다를때만 진행
+              if(i!=n){
+              // 만약 잘라낸 텍스트 str가 잘라낸 텍스트와 같으면 해당 form의 이메일을 array에 넣음
+              for(var j=0;j<form.length-2;j++){
+              if(str == form[n][1].substring(j,j+2)){
+                 indexArray.push(form[n][0]);
+              }
+              console.log(n);
+              console.log(indexArray);
+              }}
+          }}
+          }
+      }}
+  
 
 
   return answer;
 }
-
 module.exports = problem6;
