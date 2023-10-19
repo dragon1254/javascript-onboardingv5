@@ -36,11 +36,9 @@ function problem6(forms) {
   for (var i = 0; i<form.length; i++){
       // 신청 이메일이 email.com으로 끝난다는것이라는 제한사항 확인
       if(form[i][0].slice(-9,form[i][0].length) == 'email.com'){
-          console.log(10);
           // 크루의 각 폼에서 이름부분에서 2개씩 잘라 str변수에 넣음
           for(var k=0;k<form.length-2;k++){
           str =form[i][1].substring(k,k+2);
-          console.log(str);
           if(str.length ==2){
           for (var n=0; n<form.length;n++){
               // 크루의 폼이 같을때는 진행x 다를때만 진행
@@ -50,8 +48,6 @@ function problem6(forms) {
               if(str == form[n][1].substring(j,j+2)){
                  indexArray.push(form[n][0]);
               }
-              console.log(n);
-              console.log(indexArray);
               }}
           }}
           }
